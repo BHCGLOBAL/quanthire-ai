@@ -20,7 +20,7 @@ export default function JDAnalyzer() {
       const data = await response.json();
       setResult(data.analysis || 'Analysis complete');
     } catch (error) {
-      setResult('Error: ' + error.message);
+      setResult('Error: ' + (error instanceof Error ? error.message : String(error)));
     } finally {
       setLoading(false);
     }
