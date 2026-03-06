@@ -20,11 +20,10 @@ export default function ResumeMatch() {
       const data = await response.json();
       setResult(data.analysis || 'Match analysis complete');
     } catch (error) {
-      setResult('Error: ' + error.message);
-    } finally {
+      setResult('Error: ' + (error instanceof Error ? error.message : String(error)));    } finally {
       setLoading(false);
     }
-  };
+  (error instanceof Error ? error.message : String(error))
 
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '40px 20px' }}>
